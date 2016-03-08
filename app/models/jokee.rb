@@ -1,2 +1,2 @@
-class Jokee < ActiveRecord::Base
+class Joke < ActiveRecord::Base
 end

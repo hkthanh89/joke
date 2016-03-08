@@ -1,6 +1,6 @@
-class CreateJokees < ActiveRecord::Migration
+class CreateJokes < ActiveRecord::Migration
   def change
-    create_table :jokees do |t|
+    create_table :jokes do |t|
       t.text :content
       t.integer :like
       t.integer :dislike
