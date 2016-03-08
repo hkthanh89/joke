@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  resources :jokes, only: [:index] do
+    member do
+      post :like
+      post :dislike
+    end
+  end
+
   root 'jokes#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
