@@ -5,7 +5,7 @@
     #logo-2
 
 
-.joke-title.text-center
+#joke-title.text-center
   #title-1 A joke a day keeps the doctor away
   #title-2 If you joke wrong way, your teeth have to pay. (Serious)
 
@@ -19,11 +19,11 @@
   .row
     .col-lg-12
       #group-buttons
-        = link_to "This is Funny!", '#',  class: 'btn btn-success'
-        = link_to "This is not funny.", '#', class: 'btn btn-success'
+        = link_to "This is Funny!", '#',  class: 'btn btn-success', id: "btn-like"
+        = link_to "This is not funny.", '#', class: 'btn btn-success', id: 'btn-dislike'
 
 .container
-  .footer
+  #footer.text-center
     #footer-1
       This website is created as part of Futureworkz Ruby on Rails developer program. The materials contained on this website are provided for general 
       information only and do not constitute any form of advice. Futureworkz assumes no responsibility for the accuracy of any particular statement and
