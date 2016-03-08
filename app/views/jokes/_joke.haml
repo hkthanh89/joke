@@ -1,0 +1,19 @@
+- if joke
+  .container
+    .row
+      .col-lg-12
+        .text-center
+          = joke.content
+
+        #horizontal-line
+          %hr
+    .row
+      .col-lg-12
+        #group-buttons.text-center
+          = link_to "This is Funny!", like_joke_path(joke),  class: 'btn btn-success', id: "btn-like", method: 'POST', remote: true
+          = link_to "This is not funny.", dislike_joke_path(joke), class: 'btn btn-success', id: 'btn-dislike', method: 'POST', remote: true
+- else
+  .container
+    .row
+      .col-lg-12
+        .text-center That's all the jokes for today! Come back another day!

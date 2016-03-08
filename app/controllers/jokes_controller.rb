@@ -14,7 +14,7 @@ class JokesController < ApplicationController
     joke = Joke.find(params[:id])
     joke.like = joke.like.to_i + 1
     joke.save
-    redirect_to root_path
+    @joke = Joke.where.not(id: session[:read_joke_ids]).first
   end
 
   def dislike
@@ -22,6 +22,9 @@ class JokesController < ApplicationController
     joke = Joke.find(params[:id])
     joke.dislike = joke.dislike.to_i - 1
     joke.save
-    redirect_to root_path
+    @joke = Joke.where.not(id: session[:read_joke_ids]).first
+    respond_to do |format|
+      format.js
+    end
   end
 end

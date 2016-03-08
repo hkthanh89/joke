@@ -10,25 +10,7 @@
   #title-2 If you joke wrong way, your teeth have to pay. (Serious)
 
 #joke-content
-  - if @joke
-    .container
-      .row
-        .col-lg-12
-          .text-center
-            = @joke.content
-
-          #horizontal-line
-            %hr
-      .row
-        .col-lg-12
-          #group-buttons.text-center
-            = link_to "This is Funny!", like_joke_path(@joke),  class: 'btn btn-success', id: "btn-like", method: 'POST'
-            = link_to "This is not funny.", dislike_joke_path(@joke), class: 'btn btn-success', id: 'btn-dislike', method: 'POST'
-  - else
-    .container
-      .row
-        .col-lg-12
-          .text-center That's all the jokes for today! Come back another day!
+  = render "joke", joke: @joke
 
 .container
   #footer.text-center
