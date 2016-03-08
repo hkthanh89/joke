@@ -17,6 +17,11 @@
   padding-top: 70px;
   padding-bottom: 100px;
   border-bottom: 1px solid #ccc;
+
+  #content {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 #btn-like {
@@ -46,7 +51,7 @@
   }
 }
 
-#horizontal-line { width: 80%; margin: 0 auto; }
+#horizontal-line { width: 60%; margin: 0 auto; }
 
 #title-1 { font-size: 30px; margin-bottom: 15px; }
 #title-2 { font-size: 13px; }
