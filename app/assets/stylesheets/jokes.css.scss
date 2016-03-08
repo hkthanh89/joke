@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#logo, #logo-2 {
+  display: inline-block;
+  padding: 20px 0;
+}
+
 #joke-title {
   padding: 93px 0;
   color: white;
@@ -10,6 +15,8 @@
 
 #joke-content {
   padding-top: 70px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid #ccc;
 }
 
 #btn-like {
@@ -30,7 +37,10 @@
 }
 
 #footer {
-  margin-top: 100px;
+  margin-top: 40px;
 }
 
 #horizontal-line { width: 80%; margin: 0 auto; }
+
+#title-1 { font-size: 30px; margin-bottom: 15px; }
+#title-2 { font-size: 13px; }
