@@ -42,3 +42,10 @@ gem 'jquery-turbolinks'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'rails_12factor', group: :production
+
+gem 'unicorn', '~> 5.0', '>= 5.0.1'
+
+group :development do
+  gem "capistrano", "~> 3.4"
+  gem 'capistrano-rails', '~> 1.1'
+end
