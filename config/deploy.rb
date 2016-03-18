@@ -49,3 +49,12 @@ namespace :deploy do
   end
 
 end
+
+namespace :setup do
+  desc "Symlink config files for Nginx and Unicorn"
+  task :symlink_config do
+    on roles(:app) do
+      execute "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
+    end
+  end
+end
