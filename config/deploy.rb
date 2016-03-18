@@ -35,6 +35,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+set :unicorn_pid, ->{ "#{shared_path}/pids/unicorn.pid" }
 set :rails_env, 'production'
 
 namespace :deploy do
@@ -55,6 +56,24 @@ namespace :setup do
   task :symlink_config do
     on roles(:app) do
       execute "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
+    end
+  end
+end
+
+namespace :rails do
+  desc 'Start application'
+  task :start do
+    on roles(:web), in: :sequence, wait: 5 do
+      within release_path do
+        execute :bundle , "exec unicorn_rails -c config/unicorn.rb -D -E #{fetch(:rails_env)}"
+      end
+    end
+  end
+
+  desc 'Restart application'
+  task :stop do
+    on roles(:web), in: :sequence, wait: 5 do
+      execute :kill, "-s QUIT `cat #{fetch(:unicorn_pid)}`"
     end
   end
 end
