@@ -49,6 +49,8 @@ namespace :deploy do
     end
   end
 
+  after 'deploy:finishing', 'rails:stop'
+  after 'deploy:finishing', 'rails:start'
 end
 
 namespace :setup do
