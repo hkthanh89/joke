@@ -38,6 +38,24 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :unicorn_pid, ->{ "#{shared_path}/pids/unicorn.pid" }
 set :rails_env, 'production'
 
+namespace :rails do
+  desc 'Start application'
+  task :start do
+    on roles(:web), in: :sequence, wait: 5 do
+      within release_path do
+        execute :bundle , "exec unicorn_rails -c config/unicorn.rb -D -E #{fetch(:rails_env)}"
+      end
+    end
+  end
+
+  desc 'Restart application'
+  task :stop do
+    on roles(:web), in: :sequence, wait: 5 do
+      execute :kill, "-s QUIT `cat #{fetch(:unicorn_pid)}`"
+    end
+  end
+end
+
 namespace :deploy do
 
   after :restart, :clear_cache do
@@ -60,24 +78,6 @@ namespace :setup do
       execute "rm -f /etc/nginx/sites-enabled/default"
       execute "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
       execute "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
-    end
-  end
-end
-
-namespace :rails do
-  desc 'Start application'
-  task :start do
-    on roles(:web), in: :sequence, wait: 5 do
-      within release_path do
-        execute :bundle , "exec unicorn_rails -c config/unicorn.rb -D -E #{fetch(:rails_env)}"
-      end
-    end
-  end
-
-  desc 'Restart application'
-  task :stop do
-    on roles(:web), in: :sequence, wait: 5 do
-      execute :kill, "-s QUIT `cat #{fetch(:unicorn_pid)}`"
     end
   end
 end
