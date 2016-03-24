@@ -46,7 +46,8 @@ set :ssh_options, {
   user: "#{fetch(:user)}",
   port: "#{fetch(:port)}",
   forward_agent: true,
-  auth_methods: %w(publickey)
+  auth_methods: %w(publickey),
+  keys: "~/.ssh/digital_ocean_personal"
 }
 #
 # The server-based syntax can be used to override options:
