@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 
 ruby "2.1.5"
+
+# place on top if there is other gems need to set ENV 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use postgresql as the database for Active Record

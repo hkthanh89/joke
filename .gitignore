@@ -23,3 +23,5 @@
 # Ignore database files
 /config/database\.yml
 /config/secrets.yml
+
+.env*
