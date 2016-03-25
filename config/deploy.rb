@@ -56,6 +56,17 @@ namespace :rails do
   end
 end
 
+namespace :nginx do
+  %w[start stop restart].each do |command|
+    desc "#{command} Nginx server"
+    task command do
+      on roles(:web) do
+        execute "sudo service nginx #{command}"
+      end
+    end
+  end
+end
+
 namespace :deploy do
 
   after :restart, :clear_cache do
