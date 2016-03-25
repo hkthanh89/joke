@@ -67,6 +67,19 @@ namespace :nginx do
   end
 end
 
+namespace :db do
+  desc "Run db seed"
+  task :seed do
+    on roles(:db) do
+      within release_path do
+        with rails_env: :production do
+          execute :rake, "db:seed"
+        end
+      end
+    end
+  end
+end
+
 namespace :deploy do
 
   after :restart, :clear_cache do
