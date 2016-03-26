@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "2.1.5"
 
 # place on top if there is other gems need to set ENV 
-gem 'dotenv-rails', :require => 'dotenv/rails-now'
+gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
