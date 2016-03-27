@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :jokes, only: [:index] do
     member do
       post :like

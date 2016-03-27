@@ -1,7 +1,11 @@
 
 .container
   .navigation
-
+    - if current_user
+      %strong= current_user.email
+      = link_to "| Log out", destroy_user_session_path, method: :delete
+    - else
+      = link_to "Sign in", new_user_session_path
 #joke-title.text-center
   #title-1 A joke a day keeps the doctor away
   #title-2 If you joke wrong way, your teeth have to pay. (Serious)
