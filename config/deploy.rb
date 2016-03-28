@@ -37,6 +37,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :unicorn_pid, ->{ "#{shared_path}/pids/unicorn.pid" }
 set :rails_env, 'production'
+set :sidekiq_config, "#{current_path}/config/sidekiq.yml"
 
 namespace :rails do
   desc 'Start application'
