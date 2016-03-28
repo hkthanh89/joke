@@ -53,6 +53,11 @@ group :development do
   gem "capistrano", "~> 3.4"
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq'
 end
 
 gem 'devise'
+
+gem 'sidekiq'
+gem 'sinatra', :require => nil
+gem 'sidekiq-failures'
