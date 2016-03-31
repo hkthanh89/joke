@@ -1,6 +1,6 @@
 def set_redis_config
   if Rails.env.production?
-    { url: 'redis://localhost:6379/12', namespace: "jokee" }
+    { url: 'redis://127.0.0.1:6379/12', namespace: "jokee" }
   else
     { url: 'redis://localhost:6379/12', namespace: "jokee" }
   end
