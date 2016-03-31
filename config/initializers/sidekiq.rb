@@ -1,8 +1,8 @@
 def set_redis_config
   if Rails.env.production?
-    { url: 'redis://localhost:6379/12', namespace: "jokee" }
+    { url: "redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}/12", namespace: ENV["REDIS_NAMESPACE"] }
   else
-    { url: 'redis://localhost:6379/12', namespace: "jokee" }
+    { url: "redis://localhost:6379/12", namespace: "jokee" }
   end
 end
 
