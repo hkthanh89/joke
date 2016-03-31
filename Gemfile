@@ -61,3 +61,4 @@ gem 'devise'
 gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
+gem 'redis-namespace'
