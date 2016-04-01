@@ -55,6 +55,13 @@ namespace :rails do
       execute :kill, "-s QUIT `cat #{fetch(:unicorn_pid)}`"
     end
   end
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:web) do
+      execute :kill, "-s USR2 `cat #{fetch(:unicorn_pid)}`"
+    end
+  end
 end
 
 namespace :nginx do
@@ -92,8 +99,9 @@ namespace :deploy do
     end
   end
 
-  after 'deploy:finishing', 'rails:stop'
-  after 'deploy:finishing', 'rails:start'
+  # after 'deploy:finishing', 'rails:stop'
+  # after 'deploy:finishing', 'rails:start'
+  after 'deploy:finishing', 'rails:restart'
 end
 
 namespace :setup do
