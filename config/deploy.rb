@@ -101,7 +101,7 @@ namespace :deploy do
 
   # after 'deploy:finishing', 'rails:stop'
   # after 'deploy:finishing', 'rails:start'
-  after 'deploy:finishing', 'rails:restart'
+  after 'deploy:finished', 'rails:restart'
 end
 
 namespace :setup do
