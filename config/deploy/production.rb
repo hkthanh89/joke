@@ -32,7 +32,7 @@ set :branch, 'master'
 set :port, 22
 set :user, 'deploy'
 
-server '128.199.255.90', user: "#{fetch(:user)}", port: "#{fetch(:port)}", roles: %w{web app db}, primary: true
+server ENV['HOST_NAME'], user: "#{fetch(:user)}", port: "#{fetch(:port)}", roles: %w{web app db}, primary: true
 
 # Custom SSH Options
 # ==================
